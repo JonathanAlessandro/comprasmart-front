@@ -26,7 +26,7 @@ export default function RegisterPage() {
           </Link>
           <CardTitle className="text-2xl font-bold">Criar uma conta</CardTitle>
           <CardDescription>
-            Preencha seus dados para começar a usar o CompraSmart.
+            Preencha seus dados para começar a usar o PoupeCesta.
           </CardDescription>
         </CardHeader>
         <CardContent>

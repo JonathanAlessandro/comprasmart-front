@@ -16,7 +16,7 @@ const FaqSection = () => {
     {
       value: "item-2",
       question: "Como o app ajuda a economizar?",
-      answer: "O CompraSmart rastreia seus gastos, sugere o mercado mais barato para a sua lista e apresenta um histórico claro da sua economia ao longo do tempo."
+      answer: "O PoupeCesta rastreia seus gastos, sugere o mercado mais barato para a sua lista e apresenta um histórico claro da sua economia ao longo do tempo."
     },
     {
       value: "item-3",

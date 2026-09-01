@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     const loginAsDemo = () => {
         const demoToken = "demo-token-12345";
         const demoName = "Usuário Demo";
-        const demoEmail = "demo@comprasmart.com";
+        const demoEmail = "demo@poupecesta.com";
         
         // Salva dados fakes para o modo demonstração
         localStorage.setItem("userToken", demoToken);

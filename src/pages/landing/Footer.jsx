@@ -1,5 +1,6 @@
 // src/components/Footer.jsx
 import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const Footer = () => {
   return (
@@ -7,8 +8,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-8">
         {/* Logo e nome */}
         <div className="flex items-center gap-3">
-          <span className="text-3xl">🛒</span>
-          <span className="font-black text-white text-2xl tracking-tight">Compra<span className="text-blue-500">Smart</span></span>
+          <BrandLogo className="[&_span:last-child]:!text-white" />
         </div>
 
         {/* Texto */}
@@ -52,7 +52,7 @@ const Footer = () => {
         {/* Direitos autorais */}
         <div className="w-full border-t border-slate-800/80 mt-8 pt-8 text-center text-slate-500 font-medium">
           <p className="text-sm">
-            © {new Date().getFullYear()} CompraSmart. Todos os direitos reservados.
+            © {new Date().getFullYear()} PoupeCesta. Todos os direitos reservados.
           </p>
         </div>
       </div>

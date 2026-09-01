@@ -15,6 +15,7 @@ import {
   ChefHat,
   LineChart,
 } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
@@ -158,9 +159,7 @@ export default function Home() {
       {/* CABEÇALHO (HEADER FIXO) */}
       <header className="bg-white/70 backdrop-blur-2xl sticky top-0 z-50 p-6 border-b border-white shadow-sm shadow-slate-100/50">
         <div className="flex justify-between items-center max-w-2xl mx-auto w-full">
-          <span className="font-black text-2xl bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent tracking-tighter italic">
-            CompraSmart
-          </span>
+          <BrandLogo />
           <Link to="/dashboard/profile" className="transform transition-transform active:scale-95">
             <div className="w-11 h-11 bg-white rounded-[1.2rem] flex items-center justify-center text-slate-600 border border-slate-200 shadow-md shadow-slate-200/50 hover:bg-slate-50 transition-colors">
               <User size={20} strokeWidth={2.5}/>

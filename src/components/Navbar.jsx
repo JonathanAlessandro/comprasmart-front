@@ -10,14 +10,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom"; 
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Navbar() {
   return (
     <header className="w-full px-6 md:px-12 py-4 flex justify-between items-center fixed top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
-      <h1 className="text-2xl font-black tracking-tight text-gray-900 flex items-center gap-2">
-        <a href="#home" className="hover:text-blue-600 transition-colors flex items-center gap-2">
-          <span className="text-2xl">🛒</span>
-          <span>Compra<span className="text-blue-600">Smart</span></span>
+      <h1>
+        <a href="#home" className="transition-transform hover:scale-[1.02]">
+          <BrandLogo />
         </a>
       </h1>
 
@@ -52,7 +52,7 @@ export function Navbar() {
             <SheetContent side="right" className="bg-white/95 backdrop-blur-sm border-l-0">
               <SheetHeader className="mb-8 mt-4">
                 <SheetTitle className="text-left text-2xl font-bold flex items-center gap-2">
-                  <span>🛒</span> Compra<span className="text-blue-600">Smart</span>
+                  <BrandLogo />
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-6 text-lg font-medium text-gray-700">

@@ -16,7 +16,7 @@ export function Navbar() {
     <header className="w-full px-4 sm:px-8 py-4 flex justify-between items-center shadow-md fixed top-0 bg-white z-50">
       <h1 className="text-2xl font-bold">
         <a href="#home" className="hover:text-red-600">
-          CompraSmart
+          PoupeCesta
         </a>
       </h1>
 

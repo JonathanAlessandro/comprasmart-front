@@ -55,7 +55,7 @@ export default function SolucaoSection() {
     {
       key: "economia",
       titulo: "Histórico de Economia",
-      descricao: "Visualize um relatório completo de quanto você já economizou usando o CompraSmart ao longo do tempo.",
+      descricao: "Visualize um relatório completo de quanto você já economizou usando o PoupeCesta ao longo do tempo.",
       Icon: TrendingDown,
     },
     {
@@ -113,7 +113,7 @@ export default function SolucaoSection() {
             A solução definitiva para as suas compras
           </h3>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl font-medium">
-            O CompraSmart é o seu assistente inteligente de compras. Organizamos tudo para que você economize tempo, dinheiro e ganhe tranquilidade.
+            O PoupeCesta é o seu assistente inteligente de compras. Organizamos tudo para que você economize tempo, dinheiro e ganhe tranquilidade.
           </p>
         </motion.div>
 
