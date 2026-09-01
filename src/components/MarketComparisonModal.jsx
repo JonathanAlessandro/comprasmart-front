@@ -36,7 +36,7 @@ export default function MarketComparisonModal({
         <div className="flex items-start justify-between border-b border-slate-100 px-6 py-5 md:px-8 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white">
           <div>
             <div className="flex items-center gap-2">
-              <span className="bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
                 <Sparkles size={12} /> Comparador de Mercados
               </span>
             </div>
@@ -60,8 +60,8 @@ export default function MarketComparisonModal({
         {/* Content */}
         <CardContent className="space-y-6 overflow-y-auto p-6 md:p-8 flex-1">
           {loading && (
-            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-blue-50 p-8 text-center text-sm font-bold text-blue-700">
-              <Loader2 className="animate-spin text-blue-600" size={32} />
+            <div className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-emerald-50 p-8 text-center text-sm font-bold text-emerald-700">
+              <Loader2 className="animate-spin text-emerald-600" size={32} />
               <p className="text-base font-black text-slate-800">Consultando catálogos de supermercados...</p>
               <p className="text-xs text-slate-500 font-medium">Buscando os menores preços atualizados no banco de dados.</p>
             </div>
@@ -119,12 +119,12 @@ export default function MarketComparisonModal({
                           onClick={() => onToggleMarket(market.source)}
                           className={`flex items-center justify-between rounded-xl border px-3 py-2 text-left text-xs transition ${
                             selected
-                              ? "border-blue-500 bg-blue-50 text-blue-900 font-black shadow-sm"
+                              ? "border-emerald-500 bg-emerald-50 text-emerald-900 font-black shadow-sm"
                               : "border-slate-200 bg-white text-slate-400 hover:border-slate-300 font-medium"
                           }`}
                         >
                           <span className="truncate">{market.market}</span>
-                          <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded ${selected ? "bg-blue-600 text-white" : "bg-slate-100 text-transparent"}`}>
+                          <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded ${selected ? "bg-emerald-600 text-white" : "bg-slate-100 text-transparent"}`}>
                             <Check size={12} strokeWidth={3} />
                           </span>
                         </button>
@@ -284,7 +284,7 @@ export default function MarketComparisonModal({
               type="button"
               onClick={onConfirm}
               disabled={loading || !comparison || availableMarkets.length === 0}
-              className="h-12 rounded-xl bg-blue-600 px-6 font-black text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-12 rounded-xl bg-emerald-600 px-6 font-black text-white shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Consultando..." : "Atualizar Comparação"}
             </Button>

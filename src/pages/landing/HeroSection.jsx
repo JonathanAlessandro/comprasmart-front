@@ -33,7 +33,7 @@ const HeroSection = () => {
     {
       icone: FaQuestion,
       texto: "Esquece itens importantes na hora da compra?",
-      colorClass: "text-blue-500",
+      colorClass: "text-emerald-500",
     },
     {
       icone: FaDollarSign,
@@ -48,7 +48,7 @@ const HeroSection = () => {
     {
       icone: FaShoppingBag,
       texto: "Não sabe qual mercado é mais econômico para sua lista?",
-      colorClass: "text-indigo-500",
+      colorClass: "text-teal-500",
     },
     {
       icone: FaClock,
@@ -67,12 +67,12 @@ const HeroSection = () => {
       <section className="relative flex flex-col items-center text-center px-4 pt-32 pb-24 gap-6 bg-slate-50 items-center justify-center overflow-hidden">
         {/* Background blobs decorativos */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-40">
-           <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
+           <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-emerald-100/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-purple-100/50 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
         <motion.div
-           className="px-4 py-2 border border-blue-200 bg-blue-50/50 rounded-full text-blue-700 text-sm font-semibold mb-2 relative z-10"
+           className="px-4 py-2 border border-emerald-200 bg-emerald-50/50 rounded-full text-emerald-700 text-sm font-semibold mb-2 relative z-10"
            initial={{ opacity: 0, y: -20 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.6 }}
@@ -87,7 +87,7 @@ const HeroSection = () => {
           transition={{ delay: 0.1, duration: 0.6 }}
         >
           Transforme as compras de mercado em{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
             decisões inteligentes
           </span>
         </motion.h1>
@@ -108,7 +108,7 @@ const HeroSection = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <Link to="/login">
-            <Button className="w-full sm:w-auto text-white bg-blue-600 hover:bg-blue-700 text-lg md:text-xl px-10 py-7 rounded-2xl transition-all duration-300 shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-1 font-bold">
+            <Button className="w-full sm:w-auto text-white bg-emerald-600 hover:bg-emerald-700 text-lg md:text-xl px-10 py-7 rounded-2xl transition-all duration-300 shadow-xl shadow-emerald-600/20 hover:shadow-emerald-600/40 hover:-translate-y-1 font-bold">
               Começar a economizar grátis
             </Button>
           </Link>
@@ -137,7 +137,7 @@ const HeroSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-blue-600 font-bold uppercase tracking-wider text-sm mb-2">Desafios Comuns</h2>
+            <h2 className="text-emerald-600 font-bold uppercase tracking-wider text-sm mb-2">Desafios Comuns</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900">Você já sentiu esses problemas no mercado?</h3>
           </motion.div>
           

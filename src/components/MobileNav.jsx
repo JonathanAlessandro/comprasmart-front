@@ -79,7 +79,7 @@ export default function MobileNav() {
               key={item.path}
               to={item.path}
               className={`flex flex-col items-center justify-center transition-all ${
-                isActive ? "text-blue-600 scale-110" : "text-slate-400"
+                isActive ? "text-emerald-600 scale-110" : "text-slate-400"
               }`}
             >
               <Icon
@@ -104,7 +104,7 @@ export default function MobileNav() {
             setError("");
             setShowModal(true);
           }}
-          className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 hover:bg-blue-700 w-14 h-14 rounded-2xl shadow-lg shadow-blue-200 border-4 border-white active:scale-90 transition-all z-50 p-0"
+          className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-emerald-600 hover:bg-emerald-700 w-14 h-14 rounded-2xl shadow-lg shadow-emerald-200 border-4 border-white active:scale-90 transition-all z-50 p-0"
         >
           <Plus className="w-8 h-8 text-white" strokeWidth={3} />
         </Button>
@@ -167,7 +167,7 @@ export default function MobileNav() {
                 <Button
                   type="submit"
                   disabled={isSubmitting || !name.trim()}
-                  className="w-full h-14 rounded-2xl bg-blue-600 hover:bg-blue-700 font-black text-lg shadow-lg shadow-blue-100 mt-2"
+                  className="w-full h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-700 font-black text-lg shadow-lg shadow-emerald-100 mt-2"
                 >
                   {isSubmitting ? "Criando..." : "Criar Agora"}
                 </Button>

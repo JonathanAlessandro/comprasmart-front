@@ -12,7 +12,7 @@ const Footer = () => {
         </div>
 
         {/* Texto */}
-        <p className="text-sm text-gray-400 text-center uppercase tracking-[0.2em] font-semibold text-blue-500/80">
+        <p className="text-sm text-gray-400 text-center uppercase tracking-[0.2em] font-semibold text-emerald-500/80">
           O SEU ASSISTENTE INTELIGENTE DE COMPRAS
         </p>
 
@@ -25,26 +25,26 @@ const Footer = () => {
 
         {/* Ícones de redes sociais */}
         <div className="flex gap-6 text-2xl mt-4">
-          <a href="#" className="text-slate-500 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+          <a href="#" className="text-slate-500 hover:text-emerald-400 hover:scale-110 transition-all duration-300">
             <FaInstagram />
           </a>
-          <a href="#" className="text-slate-500 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+          <a href="#" className="text-slate-500 hover:text-emerald-400 hover:scale-110 transition-all duration-300">
             <FaTwitter />
           </a>
-          <a href="#" className="text-slate-500 hover:text-blue-400 hover:scale-110 transition-all duration-300">
+          <a href="#" className="text-slate-500 hover:text-emerald-400 hover:scale-110 transition-all duration-300">
             <FaFacebook />
           </a>
         </div>
 
         {/* Links adicionais */}
         <div className="flex gap-8 text-sm mt-4 font-semibold text-slate-400">
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-emerald-400 transition-colors">
             Privacidade
           </a>
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-emerald-400 transition-colors">
             Termos de Uso
           </a>
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <a href="#" className="hover:text-emerald-400 transition-colors">
             Contato
           </a>
         </div>

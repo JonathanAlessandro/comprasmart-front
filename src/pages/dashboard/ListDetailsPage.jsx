@@ -327,7 +327,7 @@ export default function ListDetailsPage() {
       <div className="mx-auto max-w-3xl space-y-7 pt-8">
         <header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Lista de compras</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">Lista de compras</p>
             <h1 className="mt-1 text-4xl font-black leading-none tracking-tight text-slate-900">{list.name}</h1>
             <p className="mt-3 text-sm font-semibold text-slate-500">Adicione produtos, defina seus preços e compare com os mercados quando desejar.</p>
           </div>
@@ -357,11 +357,11 @@ export default function ListDetailsPage() {
                     onChange={(event) => handleNameChange(event.target.value)}
                     onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
                     placeholder="Ex.: Arroz 5kg, Leite integral, Sabão em pó..."
-                    className={`h-14 rounded-2xl border-transparent bg-slate-50 pl-12 pr-12 text-base font-bold shadow-inner focus:bg-white ${allergyConflict ? "text-red-700 focus:ring-red-200" : "focus:ring-blue-100"}`}
+                    className={`h-14 rounded-2xl border-transparent bg-slate-50 pl-12 pr-12 text-base font-bold shadow-inner focus:bg-white ${allergyConflict ? "text-red-700 focus:ring-red-200" : "focus:ring-emerald-100"}`}
                     autoComplete="off"
                     required
                   />
-                  {searching && <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 animate-spin text-blue-600" size={18} />}
+                  {searching && <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 animate-spin text-emerald-600" size={18} />}
                 </div>
 
                 {/* Dropdown de sugestões do scraper */}
@@ -376,7 +376,7 @@ export default function ListDetailsPage() {
                         type="button"
                         onMouseDown={(event) => event.preventDefault()}
                         onClick={() => chooseSuggestion(product)}
-                        className="flex w-full items-center justify-between gap-4 rounded-xl px-3 py-2.5 text-left transition hover:bg-blue-50"
+                        className="flex w-full items-center justify-between gap-4 rounded-xl px-3 py-2.5 text-left transition hover:bg-emerald-50"
                       >
                         <span className="min-w-0">
                           <span className="block truncate text-sm font-black text-slate-800">{product.name}</span>
@@ -404,7 +404,7 @@ export default function ListDetailsPage() {
                     <button
                       type="button"
                       onClick={() => setNewItem((current) => ({ ...current, quantity: Math.max(1, current.quantity - 1) }))}
-                      className="flex h-9 w-9 items-center justify-center rounded-xl text-blue-600 transition hover:bg-blue-100"
+                      className="flex h-9 w-9 items-center justify-center rounded-xl text-emerald-600 transition hover:bg-emerald-100"
                       aria-label="Diminuir quantidade"
                     >
                       <Minus size={16} strokeWidth={3} />
@@ -413,7 +413,7 @@ export default function ListDetailsPage() {
                     <button
                       type="button"
                       onClick={() => setNewItem((current) => ({ ...current, quantity: current.quantity + 1 }))}
-                      className="flex h-9 w-9 items-center justify-center rounded-xl text-blue-600 transition hover:bg-blue-100"
+                      className="flex h-9 w-9 items-center justify-center rounded-xl text-emerald-600 transition hover:bg-emerald-100"
                       aria-label="Aumentar quantidade"
                     >
                       <Plus size={16} strokeWidth={3} />
@@ -432,7 +432,7 @@ export default function ListDetailsPage() {
                       placeholder="Preço (ex: 15,90)"
                       value={newItem.price}
                       onChange={(e) => setNewItem((current) => ({ ...current, price: e.target.value }))}
-                      className="h-14 rounded-2xl border-transparent bg-slate-50 pl-10 pr-3 text-base font-bold shadow-inner focus:bg-white focus:ring-blue-100"
+                      className="h-14 rounded-2xl border-transparent bg-slate-50 pl-10 pr-3 text-base font-bold shadow-inner focus:bg-white focus:ring-emerald-100"
                     />
                   </div>
                 </div>
@@ -442,7 +442,7 @@ export default function ListDetailsPage() {
                   <Button
                     type="submit"
                     disabled={savingItem || !newItem.name.trim()}
-                    className="w-full h-14 rounded-2xl bg-blue-600 font-black text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 disabled:opacity-50 transition-all hover:scale-[1.02] active:scale-95"
+                    className="w-full h-14 rounded-2xl bg-emerald-600 font-black text-white shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 disabled:opacity-50 transition-all hover:scale-[1.02] active:scale-95"
                   >
                     {savingItem ? "Adicionando..." : <><Plus className="mr-1.5" size={18} /> Adicionar</>}
                   </Button>
@@ -501,7 +501,7 @@ export default function ListDetailsPage() {
         <div className="space-y-8">
           {groupedItems.length === 0 ? (
             <div className="rounded-[2rem] border border-dashed border-slate-200 bg-white/70 px-6 py-16 text-center shadow-sm">
-              <ShoppingBag className="mx-auto text-blue-300" size={48} />
+              <ShoppingBag className="mx-auto text-emerald-300" size={48} />
               <h2 className="mt-4 text-2xl font-black text-slate-800">Sua lista está vazia</h2>
               <p className="mx-auto mt-2 max-w-sm text-sm font-medium text-slate-500">
                 Digite o nome de um produto, informe o preço e a quantidade para montar sua lista de compras.
@@ -511,7 +511,7 @@ export default function ListDetailsPage() {
             groupedItems.map(({ categoryName, items: categoryItems }) => (
               <section key={categoryName} className="space-y-3">
                 <div className="flex items-center gap-3 px-2">
-                  <div className="h-6 w-1.5 rounded-full bg-gradient-to-b from-blue-600 to-blue-400" />
+                  <div className="h-6 w-1.5 rounded-full bg-gradient-to-b from-emerald-600 to-emerald-400" />
                   <h2 className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">{categoryName}</h2>
                   <span className="rounded-md bg-slate-200/60 px-2 py-0.5 text-[10px] font-black text-slate-500">
                     {categoryItems.length}
@@ -524,12 +524,12 @@ export default function ListDetailsPage() {
                     className={`flex flex-col gap-4 rounded-2xl border p-4 transition sm:flex-row sm:items-center sm:justify-between ${
                       item.checked
                         ? "border-transparent bg-slate-100/60 opacity-55"
-                        : "border-transparent bg-white shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:border-blue-100"
+                        : "border-transparent bg-white shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:border-emerald-100"
                     }`}
                   >
                     {/* Checkbox e Nome do Produto */}
                     <div className="flex min-w-0 items-center gap-4 flex-1">
-                      <div className={`rounded-xl p-1 ${item.checked ? "bg-slate-200" : "bg-blue-50"}`}>
+                      <div className={`rounded-xl p-1 ${item.checked ? "bg-slate-200" : "bg-emerald-50"}`}>
                         <Checkbox
                           checked={item.checked}
                           onCheckedChange={() => toggleItemStatus(list._id, item._id)}
@@ -574,7 +574,7 @@ export default function ListDetailsPage() {
                           type="button"
                           onClick={() => changeQuantity(item, -1)}
                           disabled={item.quantity <= 1}
-                          className="flex h-7 w-7 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-100 disabled:opacity-30"
+                          className="flex h-7 w-7 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-100 disabled:opacity-30"
                           aria-label={`Diminuir quantidade de ${item.name}`}
                         >
                           <Minus size={14} strokeWidth={3} />
@@ -583,7 +583,7 @@ export default function ListDetailsPage() {
                         <button
                           type="button"
                           onClick={() => changeQuantity(item, 1)}
-                          className="flex h-7 w-7 items-center justify-center rounded-lg text-blue-600 transition hover:bg-blue-100"
+                          className="flex h-7 w-7 items-center justify-center rounded-lg text-emerald-600 transition hover:bg-emerald-100"
                           aria-label={`Aumentar quantidade de ${item.name}`}
                         >
                           <Plus size={14} strokeWidth={3} />
@@ -592,10 +592,10 @@ export default function ListDetailsPage() {
 
                       {/* Subtotal (EDITÁVEL — o usuário clica aqui para mudar o preço) */}
                       <div
-                        className={`min-w-[120px] sm:min-w-[140px] rounded-xl border px-3 py-1.5 transition focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-100 ${
+                        className={`min-w-[120px] sm:min-w-[140px] rounded-xl border px-3 py-1.5 transition focus-within:border-emerald-400 focus-within:ring-2 focus-within:ring-emerald-100 ${
                           item.checked
                             ? "border-slate-100 bg-slate-50 text-slate-400"
-                            : "border-slate-200 bg-white text-slate-900 hover:border-blue-200"
+                            : "border-slate-200 bg-white text-slate-900 hover:border-emerald-200"
                         }`}
                         title="Clique para editar o preço do item (subtotal = preço unitário × qtd)"
                       >
@@ -659,20 +659,20 @@ export default function ListDetailsPage() {
           )}
           <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
             <span className="flex items-center gap-2">
-              <Check size={15} className="text-blue-500" /> Itens marcados (no carrinho)
+              <Check size={15} className="text-emerald-500" /> Itens marcados (no carrinho)
             </span>
             <span className="rounded-md bg-slate-100 px-2 py-1 text-slate-500">
               {checkedItems} / {totalItems}
             </span>
           </div>
-          <Progress value={progress} className="h-3 rounded-full bg-slate-100 [&>div]:bg-gradient-to-r [&>div]:from-blue-600 [&>div]:to-blue-400" />
+          <Progress value={progress} className="h-3 rounded-full bg-slate-100 [&>div]:bg-gradient-to-r [&>div]:from-emerald-600 [&>div]:to-emerald-400" />
           <div className="flex items-end justify-between gap-5">
             <div>
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
-                <Check size={12} className="text-blue-500" />
+                <Check size={12} className="text-emerald-500" />
                 Total no Carrinho (itens marcados)
               </p>
-              <p className={`mt-1 text-3xl font-black tracking-tight ${overBudget ? "text-red-500" : "text-blue-600"}`}>
+              <p className={`mt-1 text-3xl font-black tracking-tight ${overBudget ? "text-red-500" : "text-emerald-600"}`}>
                 {formatCurrency(total)}
               </p>
               {totalAll > 0 && (

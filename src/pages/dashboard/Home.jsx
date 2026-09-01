@@ -58,7 +58,7 @@ const FinancialSummary = ({ totalBudget, totalSpent }) => {
             <span className="text-slate-400">Uso do Orçamento</span>
             <span
               className={`transition-colors duration-300 ${
-                totalSpent > totalBudget ? "text-red-400" : "text-blue-400"
+                totalSpent > totalBudget ? "text-red-400" : "text-emerald-400"
               }`}
             >
               {percentUsed.toFixed(0)}%
@@ -66,7 +66,7 @@ const FinancialSummary = ({ totalBudget, totalSpent }) => {
           </div>
           <Progress
             value={percentUsed}
-            className="h-2.5 bg-slate-800/50 [&>div]:bg-gradient-to-r [&>div]:from-blue-600 [&>div]:to-blue-400 transition-all shadow-inner"
+            className="h-2.5 bg-slate-800/50 [&>div]:bg-gradient-to-r [&>div]:from-emerald-600 [&>div]:to-emerald-400 transition-all shadow-inner"
           />
         </div>
 
@@ -176,8 +176,8 @@ export default function Home() {
           <h2 className="text-3xl font-black text-slate-900 tracking-tight">
             Olá, {userName ? userName.split(" ")[0] : "Usuário"}!
           </h2>
-          <p className="text-xs font-bold text-blue-600/80 uppercase tracking-[0.2em] mt-1.5 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+          <p className="text-xs font-bold text-emerald-600/80 uppercase tracking-[0.2em] mt-1.5 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Plano Gratuito
           </p>
         </section>
@@ -233,7 +233,7 @@ export default function Home() {
         <section className="space-y-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
           <div className="flex justify-between items-center px-2">
             <div className="flex items-center gap-2.5">
-              <div className="p-1.5 bg-blue-100 text-blue-600 rounded-lg">
+              <div className="p-1.5 bg-emerald-100 text-emerald-600 rounded-lg">
                 <ShoppingBag size={18} strokeWidth={2.5} />
               </div>
               <h3 className="font-black text-xs uppercase tracking-widest text-slate-500">
@@ -242,7 +242,7 @@ export default function Home() {
             </div>
             <Link
               to="/dashboard/lists"
-              className="text-[10px] font-black text-blue-600 uppercase tracking-widest hover:text-blue-800 transition-colors py-1 px-2 hover:bg-blue-50 rounded-md"
+              className="text-[10px] font-black text-emerald-600 uppercase tracking-widest hover:text-emerald-800 transition-colors py-1 px-2 hover:bg-emerald-50 rounded-md"
             >
               Ver todas
             </Link>
@@ -253,11 +253,11 @@ export default function Home() {
               // Map: Roda a função para cada lista dentro do `recentLists` criando um HTML pra elas.
               recentLists.map((list) => (
                 <Link key={list._id} to={`/dashboard/lists/${list._id}`} className="block transform transition-all active:scale-95">
-                  <Card className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(59,130,246,0.1)] transition-all rounded-[2rem] overflow-hidden group bg-white hover:bg-blue-50/30">
+                  <Card className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(16,185,129,0.12)] transition-all rounded-[2rem] overflow-hidden group bg-white hover:bg-emerald-50/30">
                     <CardContent className="p-5 flex items-center gap-5">
                       
                       {/* Ícone customizado indicando o Mês de criação */}
-                      <div className="w-14 h-14 bg-slate-50 border border-slate-100 rounded-[1.2rem] flex flex-col items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all duration-300 shadow-sm">
+                      <div className="w-14 h-14 bg-slate-50 border border-slate-100 rounded-[1.2rem] flex flex-col items-center justify-center text-slate-400 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-sm">
                         <Calendar size={18} strokeWidth={2.5} />
                         <span className="text-[8px] font-black uppercase mt-1 tracking-wider">
                           {new Date(list.createdAt)
@@ -268,7 +268,7 @@ export default function Home() {
                       
                       {/* Informações centrais da Lista */}
                       <div className="flex-1 text-left">
-                        <p className="font-black text-slate-800 text-lg group-hover:text-blue-900 transition-colors">
+                        <p className="font-black text-slate-800 text-lg group-hover:text-emerald-900 transition-colors">
                           {list.name}
                         </p>
                         <div className="flex items-center gap-1.5 text-[10.5px] font-bold text-slate-400 uppercase tracking-wide mt-1">
@@ -278,11 +278,11 @@ export default function Home() {
                       </div>
                       
                       {/* Seta de navegação animada pro lado ao encostar */}
-                      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 group-hover:bg-blue-100 transition-colors">
+                      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 group-hover:bg-emerald-100 transition-colors">
                         <ChevronRight
                           size={20}
                           strokeWidth={2.5}
-                          className="text-slate-300 group-hover:text-blue-600 transition-transform group-hover:translate-x-1"
+                          className="text-slate-300 group-hover:text-emerald-600 transition-transform group-hover:translate-x-1"
                         />
                       </div>
                     </CardContent>

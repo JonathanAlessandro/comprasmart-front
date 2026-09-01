@@ -108,7 +108,7 @@ export default function SolucaoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-blue-600 font-bold uppercase tracking-wider text-sm mb-2">TUDO O QUE VOCÊ PRECISA</h2>
+          <h2 className="text-emerald-600 font-bold uppercase tracking-wider text-sm mb-2">TUDO O QUE VOCÊ PRECISA</h2>
           <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">
             A solução definitiva para as suas compras
           </h3>
@@ -130,9 +130,9 @@ export default function SolucaoSection() {
               <motion.article
                 key={item.key}
                 variants={itemVariants}
-                className="bg-white rounded-3xl p-8 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 border border-gray-100 flex flex-col items-center text-center group cursor-default"
+                className="bg-white rounded-3xl p-8 hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 border border-gray-100 flex flex-col items-center text-center group cursor-default"
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-50/80 group-hover:bg-blue-600 group-hover:scale-110 group-hover:text-white rounded-2xl mb-6 mx-auto transition-all duration-300 text-blue-600 ring-4 ring-white shadow-sm">
+                <div className="flex items-center justify-center w-16 h-16 bg-emerald-50/80 group-hover:bg-emerald-600 group-hover:scale-110 group-hover:text-white rounded-2xl mb-6 mx-auto transition-all duration-300 text-emerald-600 ring-4 ring-white shadow-sm">
                   <Icon className="w-8 h-8" />
                 </div>
 

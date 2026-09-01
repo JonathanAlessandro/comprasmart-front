@@ -27,10 +27,10 @@ export default function ReceitasSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 text-white py-24 px-4 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-teal-900 via-emerald-900 to-slate-900 text-white py-24 px-4 overflow-hidden">
       {/* Elementos decorativos de fundo */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500 rounded-full mix-blend-screen filter blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500 rounded-full mix-blend-screen filter blur-3xl"></div>
       </div>
 
@@ -44,7 +44,7 @@ export default function ReceitasSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 text-blue-200 text-sm font-semibold mb-6 border border-blue-500/30">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-200 text-sm font-semibold mb-6 border border-emerald-500/30">
               <ChefHat size={16} />
               <span>Funcionalidade Exclusiva</span>
             </div>
@@ -53,7 +53,7 @@ export default function ReceitasSection() {
               Descubra quanto custa fazer <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">qualquer receita</span>
             </h2>
             
-            <p className="text-lg text-blue-100/80 mb-8 leading-relaxed max-w-xl">
+            <p className="text-lg text-emerald-100/80 mb-8 leading-relaxed max-w-xl">
               Busque receitas, adicione ingredientes automaticamente e veja o custo total antes mesmo de ir ao mercado. Planeje, economize e cozinhe com mais inteligência.
             </p>
 
@@ -64,7 +64,7 @@ export default function ReceitasSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-1 text-orange-50">Listas Salvas</h4>
-                  <p className="text-sm text-blue-100/70">"Receita da Vovó", "Almoço de Domingo"... Salve suas receitas e reutilize sempre que quiser!</p>
+                  <p className="text-sm text-emerald-100/70">"Receita da Vovó", "Almoço de Domingo"... Salve suas receitas e reutilize sempre que quiser!</p>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ export default function ReceitasSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-1 text-green-50">Comparação Integrada</h4>
-                  <p className="text-sm text-blue-100/70">E o melhor: o app ainda compara preços entre mercados para garantir que você sempre pague o menor valor.</p>
+                  <p className="text-sm text-emerald-100/70">E o melhor: o app ainda compara preços entre mercados para garantir que você sempre pague o menor valor.</p>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function ReceitasSection() {
             viewport={{ once: true, margin: "-50px" }}
           >
             {/* Base do "App" */}
-            <div className="bg-white rounded-3xl p-6 shadow-2xl shadow-blue-900/50 text-gray-800 border border-gray-200 relative z-10 w-full overflow-hidden">
+            <div className="bg-white rounded-3xl p-6 shadow-2xl shadow-emerald-900/50 text-gray-800 border border-gray-200 relative z-10 w-full overflow-hidden">
               
               {/* Topo: Busca */}
               <motion.div variants={itemVariants} className="mb-6">
@@ -108,7 +108,7 @@ export default function ReceitasSection() {
                 
                 {/* Bloco Inteligente */}
                 <div className="bg-white rounded-xl p-3 mb-3 shadow-sm border border-orange-100/50">
-                  <p className="text-xs font-semibold text-blue-600 mb-2">💡 Você já possui alguns ingredientes</p>
+                  <p className="text-xs font-semibold text-emerald-600 mb-2">💡 Você já possui alguns ingredientes</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center justify-between text-gray-500 opacity-70">
                       <div className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Ovos</div>

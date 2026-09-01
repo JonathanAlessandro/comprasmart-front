@@ -119,7 +119,7 @@ export function RegisterForm() {
       {/* Link de volta para a tela de Login */}
       <div className="mt-4 text-center text-sm">
         Já tem uma conta?{" "}
-        <Link to="/login" className="font-semibold text-blue-600 hover:underline">
+        <Link to="/login" className="font-semibold text-emerald-600 hover:underline">
           Entrar
         </Link>
       </div>

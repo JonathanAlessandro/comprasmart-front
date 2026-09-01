@@ -83,7 +83,7 @@ export function LoginForm() {
           <label htmlFor="password" className="text-sm font-medium">
             Senha
           </label>
-          <a href="#" className="text-xs text-blue-600 hover:underline">
+          <a href="#" className="text-xs text-emerald-600 hover:underline">
             Esqueceu a senha?
           </a>
         </div>
@@ -107,7 +107,7 @@ export function LoginForm() {
       <Button
         type="button"
         variant="outline"
-        className="w-full border-blue-200 text-blue-700 hover:bg-blue-50"
+        className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50"
         onClick={handleDemoLogin}
         disabled={isLoading}
       >
@@ -119,7 +119,7 @@ export function LoginForm() {
         Não tem uma conta?{" "}
         <Link
           to="/register"
-          className="font-semibold text-blue-600 hover:underline"
+          className="font-semibold text-emerald-600 hover:underline"
         >
           Cadastre-se
         </Link>

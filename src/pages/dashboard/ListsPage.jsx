@@ -86,8 +86,8 @@ export default function ListsPage() {
   // =========================================================================
   const renderEmptyState = () => (
     <div className="flex flex-col items-center justify-center py-24 bg-white/60 backdrop-blur-md rounded-[3rem] border border-slate-200 mt-6 shadow-sm animate-in fade-in zoom-in duration-500">
-      <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-5 rounded-[1.5rem] mb-6 shadow-inner ring-4 ring-white">
-        <ShoppingCart className="w-12 h-12 text-blue-600 drop-shadow-sm" />
+      <div className="bg-gradient-to-br from-emerald-100 to-emerald-50 p-5 rounded-[1.5rem] mb-6 shadow-inner ring-4 ring-white">
+        <ShoppingCart className="w-12 h-12 text-emerald-600 drop-shadow-sm" />
       </div>
       <h2 className="text-2xl font-black text-slate-900 tracking-tight">
         Sua despensa está vazia!
@@ -101,7 +101,7 @@ export default function ListsPage() {
           setError("");
           setShowModal(true);
         }}
-        className="mt-8 bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-all text-white rounded-2xl px-8 h-12 font-black shadow-lg shadow-blue-600/30"
+        className="mt-8 bg-emerald-600 hover:bg-emerald-700 hover:scale-105 transition-all text-white rounded-2xl px-8 h-12 font-black shadow-lg shadow-emerald-600/30"
       >
         <Plus className="mr-2 w-5 h-5" /> CRIAR LISTA
       </Button>
@@ -119,7 +119,7 @@ export default function ListsPage() {
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">
             Minhas Listas
           </h1>
-          <p className="text-blue-600 text-[10px] font-black uppercase tracking-widest mt-1">
+          <p className="text-emerald-600 text-[10px] font-black uppercase tracking-widest mt-1">
             {lists.length} Listas Ativas
           </p>
         </div>
@@ -149,17 +149,17 @@ export default function ListsPage() {
             <Card
               key={list._id}
               onClick={() => navigate(`/dashboard/lists/${list._id}`)}
-              className="group relative overflow-hidden bg-white border-transparent shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(59,130,246,0.12)] hover:-translate-y-1 transition-all duration-300 cursor-pointer rounded-[2.5rem]"
+              className="group relative overflow-hidden bg-white border-transparent shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(16,185,129,0.14)] hover:-translate-y-1 transition-all duration-300 cursor-pointer rounded-[2.5rem]"
             >
               {/* Filete de cor dinâmico do lado esquerdo para embelezar */}
-              <div className="absolute left-0 top-0 bottom-0 w-2 bg-slate-100 group-hover:bg-gradient-to-b group-hover:from-blue-600 group-hover:to-blue-400 transition-all duration-500" />
+              <div className="absolute left-0 top-0 bottom-0 w-2 bg-slate-100 group-hover:bg-gradient-to-b group-hover:from-emerald-600 group-hover:to-emerald-400 transition-all duration-500" />
               
               <CardHeader className="flex flex-row items-center justify-between p-6 pb-2">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-slate-50 border border-slate-100 rounded-[1.2rem] group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <div className="p-3 bg-slate-50 border border-slate-100 rounded-[1.2rem] group-hover:bg-emerald-600 group-hover:border-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
                     <ListChecks className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                   </div>
-                  <CardTitle className="text-xl font-black text-slate-800 tracking-tight group-hover:text-blue-900 transition-colors">
+                  <CardTitle className="text-xl font-black text-slate-800 tracking-tight group-hover:text-emerald-900 transition-colors">
                     {list.name}
                   </CardTitle>
                 </div>
@@ -224,7 +224,7 @@ export default function ListsPage() {
                   </label>
                   <Input
                     placeholder="Ex: Rancho do mês..."
-                    className="h-14 rounded-[1.2rem] bg-slate-50 border-transparent focus:border-blue-500 focus:bg-white transition-all font-bold text-lg px-4"
+                    className="h-14 rounded-[1.2rem] bg-slate-50 border-transparent focus:border-emerald-500 focus:bg-white transition-all font-bold text-lg px-4"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -242,7 +242,7 @@ export default function ListsPage() {
                     </span>
                     <Input
                       type="number"
-                      className="h-14 rounded-[1.2rem] bg-slate-50 border-transparent focus:border-blue-500 focus:bg-white transition-all font-bold text-lg pl-12"
+                      className="h-14 rounded-[1.2rem] bg-slate-50 border-transparent focus:border-emerald-500 focus:bg-white transition-all font-bold text-lg pl-12"
                       value={budget}
                       onChange={(e) => setBudget(e.target.value)}
                       placeholder="0,00"
@@ -252,7 +252,7 @@ export default function ListsPage() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-14 rounded-[1.2rem] bg-blue-600 hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all font-black text-lg text-white shadow-lg shadow-blue-600/30 mt-2"
+                  className="w-full h-14 rounded-[1.2rem] bg-emerald-600 hover:bg-emerald-700 hover:scale-[1.02] active:scale-95 transition-all font-black text-lg text-white shadow-lg shadow-emerald-600/30 mt-2"
                 >
                   {isSubmitting ? "Criando..." : "Salvar"}
                 </Button>

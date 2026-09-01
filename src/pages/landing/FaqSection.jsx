@@ -53,7 +53,7 @@ const FaqSection = () => {
         viewport={{ once: true }}
         className="mb-14"
       >
-        <h2 className="text-blue-600 font-bold uppercase tracking-wider text-sm mb-2">SUPORTE E FAQ</h2>
+        <h2 className="text-emerald-600 font-bold uppercase tracking-wider text-sm mb-2">SUPORTE E FAQ</h2>
         <h3 className="text-3xl md:text-5xl font-black mb-6 text-gray-900 tracking-tight">Perguntas Frequentes</h3>
         <p className="text-gray-600 mb-10 text-lg md:text-xl max-w-2xl mx-auto font-medium">
           Tirando suas dúvidas para você começar a economizar com o pé direito.
@@ -70,7 +70,7 @@ const FaqSection = () => {
         <Accordion type="single" collapsible className="w-full text-left">
           {faqItems.map((item) => (
             <AccordionItem key={item.value} value={item.value} className="border-b-gray-100 last:border-0">
-              <AccordionTrigger className="text-gray-800 hover:text-blue-600 hover:no-underline transition-colors text-[17px] font-bold py-6">
+              <AccordionTrigger className="text-gray-800 hover:text-emerald-600 hover:no-underline transition-colors text-[17px] font-bold py-6">
                 {item.question}
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 leading-relaxed pb-6 text-[15px]">

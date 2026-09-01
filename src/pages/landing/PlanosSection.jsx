@@ -13,7 +13,7 @@ const PricingCard = ({ plan, index }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.5 }}
       className={`relative flex flex-col p-10 rounded-[2rem] shadow-xl transition-all duration-300 hover:-translate-y-2 ${
-        isPopular ? "bg-gradient-to-b from-blue-600 to-indigo-700 text-white shadow-blue-900/20 shadow-2xl" : "bg-white text-gray-800 border border-gray-100"
+        isPopular ? "bg-gradient-to-b from-emerald-600 to-teal-700 text-white shadow-emerald-900/20 shadow-2xl" : "bg-white text-gray-800 border border-gray-100"
       }`}
     >
       {isPopular && (
@@ -25,7 +25,7 @@ const PricingCard = ({ plan, index }) => {
       <h3 className={`text-2xl lg:text-3xl font-black mb-2 tracking-tight ${isPopular ? "text-white" : "text-gray-900"}`}>{name}</h3>
       <p
         className={`text-sm mb-8 min-h-[40px] leading-relaxed font-medium ${
-          isPopular ? "text-blue-100" : "text-gray-500"
+          isPopular ? "text-emerald-100" : "text-gray-500"
         }`}
       >
         {name === "Gratuito"
@@ -45,7 +45,7 @@ const PricingCard = ({ plan, index }) => {
         </span>
         <span
           className={`ml-1 text-xl font-medium mb-2 ${
-            isPopular ? "text-blue-200" : "text-gray-400"
+            isPopular ? "text-emerald-200" : "text-gray-400"
           }`}
         >
           {price.split("/")[1] ? `/${price.split("/")[1]}` : ""}
@@ -56,10 +56,10 @@ const PricingCard = ({ plan, index }) => {
         {features.map((feature, idx) => {
           return (
             <li key={idx} className="flex items-start gap-3">
-              <div className={`mt-1 p-1 rounded-full ${isPopular ? "bg-white/20" : "bg-blue-50"}`}>
+              <div className={`mt-1 p-1 rounded-full ${isPopular ? "bg-white/20" : "bg-emerald-50"}`}>
                 <Check
                   className={`flex-shrink-0 w-3 h-3 ${
-                    isPopular ? "text-white" : "text-blue-600"
+                    isPopular ? "text-white" : "text-emerald-600"
                   }`}
                   strokeWidth={3}
                 />
@@ -78,7 +78,7 @@ const PricingCard = ({ plan, index }) => {
 
       <Button
         className={`w-full font-bold py-7 text-lg rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg ${buttonClass} ${
-          isPopular ? "text-blue-700 bg-white hover:bg-gray-50 hover:-translate-y-1" : "hover:-translate-y-1"
+          isPopular ? "text-emerald-700 bg-white hover:bg-gray-50 hover:-translate-y-1" : "hover:-translate-y-1"
         }`}
       >
         {buttonText}
@@ -100,7 +100,7 @@ export default function PricingSection() {
         "Checklists interativos",
       ],
       buttonText: "Começar Agora",
-      buttonClass: "bg-blue-50 text-blue-700 hover:bg-blue-100",
+      buttonClass: "bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
     },
     {
       name: "Plus",
@@ -128,14 +128,14 @@ export default function PricingSection() {
         "Exportar e compartilhar dados",
       ],
       buttonText: "Seja Premium",
-      buttonClass: "bg-blue-50 text-blue-700 hover:bg-blue-100",
+      buttonClass: "bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
     },
   ];
 
   return (
     <section id="pricing" className="bg-slate-50 py-32 px-4 border-t border-gray-100 relative overflow-hidden">
       {/* Decoração da Section de Preços */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
@@ -144,7 +144,7 @@ export default function PricingSection() {
            viewport={{ once: true }}
            className="mb-20"
         >
-          <h2 className="text-blue-600 font-bold uppercase tracking-wider text-sm mb-2">INVESTIMENTO</h2>
+          <h2 className="text-emerald-600 font-bold uppercase tracking-wider text-sm mb-2">INVESTIMENTO</h2>
           <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
             Escolha o plano ideal
           </h3>

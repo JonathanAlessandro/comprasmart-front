@@ -35,7 +35,7 @@ export default function Profile() {
       <div className="bg-white border-b border-slate-100 p-8 pt-16 text-center shadow-sm">
         <div className="relative inline-block animate-in zoom-in duration-500">
           {/* Avatar principal. Como não temos upload de foto ainda, usamos cor sólida */}
-          <div className="w-28 h-28 bg-gradient-to-br from-blue-500 to-blue-700 rounded-[3rem] flex items-center justify-center mx-auto shadow-2xl shadow-blue-500/30 text-white mb-5 transition-transform hover:scale-105 duration-300">
+          <div className="w-28 h-28 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-[3rem] flex items-center justify-center mx-auto shadow-2xl shadow-emerald-500/30 text-white mb-5 transition-transform hover:scale-105 duration-300">
             <User size={48} strokeWidth={2.5} />
           </div>
           {/* Indicador de Online verde (UX clássico) */}

@@ -74,7 +74,7 @@ export default function AllergenWarningPopup({
         <div className="px-7 py-5">
           {loading ? (
             <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-5 text-sm font-bold text-slate-500">
-              <div className="h-3 w-3 animate-ping rounded-full bg-blue-500" />
+              <div className="h-3 w-3 animate-ping rounded-full bg-emerald-500" />
               Verificando alergênicos nas bases Open Food Facts e ANVISA...
             </div>
           ) : byAllergy.size === 0 ? (
