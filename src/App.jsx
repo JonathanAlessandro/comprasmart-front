@@ -1,6 +1,6 @@
 // src/App.jsx
 
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -23,7 +23,6 @@ import Home from "./pages/dashboard/Home";
 import ListsPage from "./pages/dashboard/ListsPage";
 import AlertsPage from "./pages/dashboard/AlertsPage";
 import ProfilePage from "./pages/dashboard/ProfilePage";
-import NewListModal from "./components/NewListModal";
 import ListDetailsPage from "./pages/dashboard/ListDetailsPage";
 import RecipesPage from "./pages/dashboard/RecipesPage";
 import HistoryPage from "./pages/dashboard/HistoryPage";
@@ -31,19 +30,14 @@ import HistoryPage from "./pages/dashboard/HistoryPage";
 // 1. DASHBOARD LAYOUT
 // =======================================================
 const DashboardLayout = () => {
-  // Estado para controlar a abertura/fechamento do Modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     // Estrutura base para garantir que o MobileNav fique fixo
-    <div className="min-h-screen bg-gray-50 flex flex-col pb-20">
+    <div className="min-h-screen bg-gray-50 flex flex-col pb-20 md:pb-32">
       {" "}
       {/* Adicionado pb-20 para não esconder conteúdo */}
       {/* O Outlet renderiza o conteúdo da rota filha (Home, ListsPage, etc.) */}
       <Outlet />
-      {/* A navegação móvel fica fixa e passa a função para abrir o modal */}
-      <MobileNav onFabClick={() => setIsModalOpen(true)} />
-      <NewListModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      <MobileNav />
     </div>
   );
 };
