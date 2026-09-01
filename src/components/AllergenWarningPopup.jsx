@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { AlertTriangle, ShieldAlert, FlaskConical, Package, X } from "lucide-react";
-import { Button, Card } from "../ui";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 function sourceBadge(source) {
   switch (source) {
