@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Search, 
-  ChefHat, 
-  Plus, 
-  Check, 
-  Store, 
-  Star, 
-  Heart, 
+import {
+  Search,
+  ChefHat,
+  Plus,
+  Check,
+  Store,
+  Star,
+  Heart,
   ArrowRight,
   ShoppingCart
 } from "lucide-react";
@@ -36,7 +36,7 @@ export default function ReceitasSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Coluna da Esquerda: Textos */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -48,11 +48,11 @@ export default function ReceitasSection() {
               <ChefHat size={16} />
               <span>Funcionalidade Exclusiva</span>
             </div>
-            
+
             <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
               Descubra quanto custa fazer <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">qualquer receita</span>
             </h2>
-            
+
             <p className="text-lg text-emerald-100/80 mb-8 leading-relaxed max-w-xl">
               Busque receitas, adicione ingredientes automaticamente e veja o custo total antes mesmo de ir ao mercado. Planeje, economize e cozinhe com mais inteligência.
             </p>
@@ -81,7 +81,7 @@ export default function ReceitasSection() {
           </motion.div>
 
           {/* Coluna da Direita: Simulação UI */}
-          <motion.div 
+          <motion.div
             className="relative lg:ml-auto w-full max-w-md mx-auto"
             variants={containerVariants}
             initial="hidden"
@@ -90,7 +90,7 @@ export default function ReceitasSection() {
           >
             {/* Base do "App" */}
             <div className="bg-white rounded-3xl p-6 shadow-2xl shadow-emerald-900/50 text-gray-800 border border-gray-200 relative z-10 w-full overflow-hidden">
-              
+
               {/* Topo: Busca */}
               <motion.div variants={itemVariants} className="mb-6">
                 <div className="flex items-center gap-3 bg-gray-100 rounded-xl p-3 border border-gray-200">
@@ -105,7 +105,7 @@ export default function ReceitasSection() {
                   <span>Ingredientes necessários</span>
                   <span className="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">4 itens</span>
                 </h4>
-                
+
                 {/* Bloco Inteligente */}
                 <div className="bg-white rounded-xl p-3 mb-3 shadow-sm border border-orange-100/50">
                   <p className="text-xs font-semibold text-emerald-600 mb-2">💡 Você já possui alguns ingredientes</p>
@@ -146,7 +146,7 @@ export default function ReceitasSection() {
 
                 <div className="space-y-2 text-sm">
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Custo adicional estimado</p>
-                  
+
                   <div className="flex justify-between items-center bg-white p-2.5 rounded-lg border border-gray-200">
                     <span className="text-gray-600">Mercado A</span>
                     <span className="font-semibold text-gray-800">R$ 21,50</span>
@@ -165,22 +165,22 @@ export default function ReceitasSection() {
 
             </div>
 
-             {/* Elemento flutuante */}
-             <motion.div 
-               className="absolute -right-8 top-12 bg-white text-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 z-20 flex items-center gap-3 w-56 hidden md:flex"
-               initial={{ opacity: 0, x: 20, y: 10 }}
-               whileInView={{ opacity: 1, x: 0, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.8, type: "spring" }}
-             >
-               <div className="bg-red-100 text-red-500 p-2 rounded-xl">
-                 <Heart className="w-5 h-5 fill-current" />
-               </div>
-               <div>
-                 <p className="text-xs text-gray-500">Adicionado de</p>
-                 <p className="text-sm font-bold">Receita da Vovó</p>
-               </div>
-             </motion.div>
+            {/* Elemento flutuante */}
+            <motion.div
+              className="absolute -right-8 top-12 bg-white text-gray-800 p-4 rounded-2xl shadow-xl border border-gray-100 z-20 flex items-center gap-3 w-56 hidden md:flex"
+              initial={{ opacity: 0, x: 20, y: 10 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, type: "spring" }}
+            >
+              <div className="bg-red-100 text-red-500 p-2 rounded-xl">
+                <Heart className="w-5 h-5 fill-current" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500">Adicionado de</p>
+                <p className="text-sm font-bold">Receita da Vovó</p>
+              </div>
+            </motion.div>
 
           </motion.div>
 

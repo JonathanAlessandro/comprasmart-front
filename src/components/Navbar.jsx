@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         <div className="hidden md:flex">
           <Link to="/login">
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl px-6 py-2 shadow-sm font-semibold transition-all">
+            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl px-6 py-2 shadow-md shadow-emerald-600/20 font-bold transition-all">
               Entrar
             </Button>
           </Link>

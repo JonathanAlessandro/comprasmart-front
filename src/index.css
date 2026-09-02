@@ -28,8 +28,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -54,7 +55,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -62,7 +63,56 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at top, rgba(124, 58, 237, 0.12), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 25%);
   }
+}
+
+html.dark body {
+  background: #02060d;
+}
+
+html.dark .bg-\[\#F8FAFC\] {
+  background-color: #02060d !important;
+}
+html.dark .bg-gray-50 {
+  background-color: #02060d !important;
+}
+html.dark .bg-slate-50 {
+  background-color: #0f172a !important;
+  border: 1px solid #1e293b !important;
+}
+html.dark .bg-white {
+  background-color: #0b1120 !important;
+  border: 1px solid #1e293b !important;
+}
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+html.dark .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+html.dark .text-slate-600,
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+html.dark .border-slate-100 {
+  border-color: #1e293b !important;
+}
+html.dark .border-slate-200 {
+  border-color: #1e293b !important;
+}
+html.dark .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+html.dark .shadow-slate-900\/10 {
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.45) !important;
 }

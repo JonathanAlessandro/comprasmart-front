@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import api from "@/services/api";
 import heroImage from "@/assets/hero-ilustration.png";
 import { Link } from "react-router-dom";
 import {
@@ -8,7 +10,8 @@ import {
   FaExclamationTriangle,
   FaShoppingBag,
   FaClock,
-  FaSearchDollar
+  FaSearchDollar,
+  FaUsers
 } from "react-icons/fa";
 
 const ProblemaCard = ({ icone: Icone, texto, colorClass, index }) => (
@@ -29,6 +32,20 @@ const ProblemaCard = ({ icone: Icone, texto, colorClass, index }) => (
 );
 
 const HeroSection = () => {
+  const [userCount, setUserCount] = useState(2450);
+
+  useEffect(() => {
+    api.get("/users/count")
+      .then(response => {
+        if (response.data && typeof response.data.count === 'number') {
+          setUserCount(response.data.count);
+        }
+      })
+      .catch(error => {
+        console.warn("Não foi possível carregar o número real de usuários. Verifique se a rota GET /users/count existe no backend MySQL.", error);
+      });
+  }, []);
+
   const problemas = [
     {
       icone: FaQuestion,
@@ -112,6 +129,26 @@ const HeroSection = () => {
               Começar a economizar grátis
             </Button>
           </Link>
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 mt-6 flex flex-col items-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-emerald-100 shadow-sm">
+            <div className="flex -space-x-2">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-emerald-100 flex items-center justify-center text-[10px] font-bold text-emerald-800">
+                  <FaUsers size={12} className="text-emerald-600/60" />
+                </div>
+              ))}
+            </div>
+            <p className="text-sm font-semibold text-slate-600">
+              Junte-se a <span className="text-emerald-600 font-black">+{userCount}</span> pessoas cadastradas!
+            </p>
+          </div>
         </motion.div>
 
         <motion.div

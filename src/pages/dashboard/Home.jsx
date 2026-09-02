@@ -112,27 +112,42 @@ export default function Home() {
 
   const getPriceComparison = () => {
     const itemMap = {};
+
     lists.forEach((list) => {
+      const marketName = list.market || list.name || "Mercado";
+
       list.items?.forEach((item) => {
-        const name = item.name.toLowerCase().trim();
-        if (item.price > 0) {
-          if (!itemMap[name]) itemMap[name] = [];
-          itemMap[name].push({
-            price: item.price,
-            market: list.market || "Outro", 
-            date: list.createdAt,
-          });
+        const rawName = item.name || item.productName || item.product?.name || "Produto";
+        const name = rawName.trim();
+
+        if (!name || Number(item.price) <= 0) return;
+
+        if (!itemMap[name.toLowerCase()]) {
+          itemMap[name.toLowerCase()] = [];
         }
+
+        itemMap[name.toLowerCase()].push({
+          name,
+          price: Number(item.price),
+          market: marketName,
+          date: list.createdAt,
+        });
       });
     });
 
     return Object.entries(itemMap)
-      .map(([name, prices]) => {
-        const sorted = prices.sort((a, b) => a.price - b.price);
-        const best = sorted[0]; 
-        const worst = sorted[sorted.length - 1]; 
-        const economy = worst.price - best.price; 
-        return { name, best, worst, economy };
+      .map(([key, prices]) => {
+        const sorted = [...prices].sort((a, b) => a.price - b.price);
+        const best = sorted[0];
+        const worst = sorted[sorted.length - 1];
+        const economy = worst.price - best.price;
+
+        return {
+          name: best.name,
+          best,
+          worst,
+          economy,
+        };
       })
       .filter((item) => item.economy > 0)
       .sort((a, b) => b.economy - a.economy)
@@ -305,18 +320,13 @@ export default function Home() {
 
         {/* Compartivo de Inteligência */}
         <section className="space-y-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300 fill-mode-both">
-          <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-2.5">
-              <div className="p-1.5 bg-emerald-100 text-emerald-600 rounded-lg shadow-sm">
-                <Tag size={18} strokeWidth={2.5} />
-              </div>
-              <h3 className="font-black text-xs uppercase tracking-widest text-slate-500">
-                Inteligência de Mercado
-              </h3>
+          <div className="flex items-center gap-2.5 px-2">
+            <div className="p-1.5 bg-emerald-100 text-emerald-600 rounded-lg shadow-sm">
+              <Tag size={18} strokeWidth={2.5} />
             </div>
-            <span className="text-[9px] bg-gradient-to-r from-emerald-400 to-emerald-500 text-white px-2.5 py-1 rounded-full font-black uppercase tracking-wider drop-shadow-sm">
-              Plus
-            </span>
+            <h3 className="font-black text-xs uppercase tracking-widest text-slate-500">
+              Inteligência de Mercado
+            </h3>
           </div>
 
           <div className="grid gap-5">
@@ -327,13 +337,16 @@ export default function Home() {
                   className="border-none shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(16,185,129,0.15)] transition-all duration-300 rounded-[2rem] bg-white overflow-hidden relative group"
                 >
                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-emerald-500"></div>
-                  
+
                   <CardContent className="p-7">
-                    <div className="flex justify-between items-center mb-6">
-                      <h4 className="font-black text-slate-900 text-xl capitalize italic">
-                        {item.name}
-                      </h4>
-                      <div className="bg-emerald-50/80 text-emerald-700 border border-emerald-100 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-wider flex items-center gap-1">
+                    <div className="flex justify-between items-center mb-6 gap-3">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Produto</p>
+                        <h4 className="font-black text-slate-900 text-xl capitalize italic">
+                          {item.name}
+                        </h4>
+                      </div>
+                      <div className="bg-emerald-50/80 text-emerald-700 border border-emerald-100 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-wider flex items-center gap-1 whitespace-nowrap">
                         🏆 Melhor Escolha
                       </div>
                     </div>

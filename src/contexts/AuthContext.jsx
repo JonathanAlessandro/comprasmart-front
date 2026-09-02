@@ -64,6 +64,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("userToken");
         localStorage.removeItem("userName");
         localStorage.removeItem("userEmail");
+        localStorage.removeItem("userAvatar");
+        localStorage.removeItem("userBio");
+        localStorage.removeItem("userProfile");
 
         // Reseta o estado do React para deslogado
         setAuthState({

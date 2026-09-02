@@ -99,7 +99,11 @@ export function LoginForm() {
       </div>
 
       {/* Botão de Entrar (Login Real) */}
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button
+        type="submit"
+        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold shadow-md shadow-emerald-600/20"
+        disabled={isLoading}
+      >
         {isLoading ? "Entrando..." : "Entrar"}
       </Button>
 

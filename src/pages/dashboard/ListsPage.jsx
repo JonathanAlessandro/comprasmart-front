@@ -175,7 +175,7 @@ export default function ListsPage() {
                 </button>
               </CardHeader>
               
-              <CardContent className="px-6 pb-6 pt-3 flex justify-between items-center ml-[3.2rem]">
+              <CardContent className="px-6 pb-6 pt-3 flex flex-wrap gap-2 justify-between items-center ml-0 sm:ml-[3.2rem]">
                 <div className="flex items-center gap-1.5 text-slate-500 text-[9px] font-black uppercase tracking-widest bg-slate-50 px-2 py-1 rounded-md">
                   <Package className="w-3.5 h-3.5" />
                   <span>{list.items?.length || 0} itens</span>

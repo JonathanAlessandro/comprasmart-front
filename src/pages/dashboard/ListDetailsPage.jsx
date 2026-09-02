@@ -440,6 +440,7 @@ export default function ListDetailsPage() {
                     value={newItem.name}
                     onChange={(event) => handleNameChange(event.target.value)}
                     onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
+                    onBlur={() => setShowSuggestions(false)}
                     placeholder="Ex.: Arroz 5kg, Leite integral, Sabão em pó..."
                     className={`h-14 rounded-2xl border-transparent bg-slate-50 pl-12 pr-12 text-base font-bold shadow-inner focus:bg-white ${allergyConflict ? "text-red-700 focus:ring-red-200" : "focus:ring-emerald-100"}`}
                     autoComplete="off"
@@ -510,12 +511,19 @@ export default function ListDetailsPage() {
                   <div className="relative">
                     <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-black text-slate-400">R$</span>
                     <Input
-                      type="number"
-                      step="0.01"
-                      min="0"
-                      placeholder="Preço (ex: 15,90)"
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="0,00"
                       value={newItem.price}
-                      onChange={(e) => setNewItem((current) => ({ ...current, price: e.target.value }))}
+                      onChange={(e) => {
+                        let val = e.target.value.replace(/\D/g, "");
+                        if (!val) {
+                          setNewItem((current) => ({ ...current, price: "" }));
+                          return;
+                        }
+                        const formatted = (Number(val) / 100).toFixed(2).replace(".", ",");
+                        setNewItem((current) => ({ ...current, price: formatted }));
+                      }}
                       className="h-14 rounded-2xl border-transparent bg-slate-50 pl-10 pr-3 text-base font-bold shadow-inner focus:bg-white focus:ring-emerald-100"
                     />
                   </div>
@@ -649,7 +657,7 @@ export default function ListDetailsPage() {
                     </div>
 
                     {/* Preço Unitário Editável, Quantidade e Subtotal */}
-                    <div className="flex items-center justify-between gap-3 sm:justify-end">
+                    <div className="flex flex-wrap items-center justify-between gap-2 sm:justify-end w-full sm:w-auto mt-2 sm:mt-0">
                       {/* Preço Unitário (referência / preço sugestão do mercado) */}
                       <div className="hidden sm:flex items-center gap-1.5 bg-slate-50 px-2.5 py-1.5 rounded-xl border border-slate-100">
                         <Tag size={12} className="text-slate-400" />
@@ -747,7 +755,7 @@ export default function ListDetailsPage() {
       </div>
 
       {/* Barra Inferior com Subtotal e Meta de Orçamento */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-100 bg-white/85 px-5 py-5 shadow-[0_-20px_40px_rgba(0,0,0,0.06)] backdrop-blur-2xl md:bottom-[72px] md:px-8">
+      <div className="fixed bottom-[72px] left-0 right-0 z-30 border-t border-slate-100 bg-white/95 px-5 py-3 shadow-[0_-20px_40px_rgba(0,0,0,0.06)] backdrop-blur-2xl md:bottom-[88px] md:px-8">
         <div className="mx-auto max-w-3xl space-y-4">
           {overBudget && showWarning && (
             <div className="flex items-center justify-between rounded-2xl bg-red-600 p-3 text-white shadow-lg shadow-red-500/20">

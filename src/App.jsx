@@ -7,6 +7,7 @@ import {
   Route,
   Navigate,
   Outlet,
+  useLocation,
 } from "react-router-dom";
 
 // UTILS E CONTEXTOS
@@ -26,6 +27,7 @@ import ProfilePage from "./pages/dashboard/ProfilePage";
 import ListDetailsPage from "./pages/dashboard/ListDetailsPage";
 import RecipesPage from "./pages/dashboard/RecipesPage";
 import HistoryPage from "./pages/dashboard/HistoryPage";
+import PlansPage from "./pages/dashboard/PlansPage";
 // =======================================================
 // 1. DASHBOARD LAYOUT
 // =======================================================
@@ -42,15 +44,36 @@ const DashboardLayout = () => {
   );
 };
 
+const DashboardThemeController = () => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    const isDashboard = location.pathname.startsWith("/dashboard");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (!isDashboard) {
+      document.documentElement.classList.remove("dark");
+      return;
+    }
+
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [location.pathname]);
+
+  return null;
+};
+
 // =======================================================
 // 2. FUNÇÃO PRINCIPAL APP
 // Define todas as rotas e injeta Contextos
 // =======================================================
 export default function App() {
-  // A verificação de autenticação será feita dentro do PrivateRoute (que usa useAuth)
-
   return (
     <BrowserRouter>
+      <DashboardThemeController />
       {/*  AuthProvider deve envolver TUDO que precisa saber sobre o usuário */}
       <AuthProvider>
         <Routes>
@@ -84,6 +107,7 @@ export default function App() {
               <Route path="lists/:id" element={<ListDetailsPage />} />
               <Route path="recipes" element={<RecipesPage />} />
               <Route path="history" element={<HistoryPage />} />
+              <Route path="plans" element={<PlansPage />} />
               {/* Redirecionamento 404 dentro do Dashboard */}
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Route>

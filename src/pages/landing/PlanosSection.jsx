@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button"; 
 import { Check } from "lucide-react"; 
 
-const PricingCard = ({ plan, index }) => {
+const PricingCard = ({ plan, index, onSelectPlan }) => {
   const { name, price, isPopular, features, buttonText, buttonClass } = plan;
 
   return (
@@ -77,6 +78,7 @@ const PricingCard = ({ plan, index }) => {
       </ul>
 
       <Button
+        onClick={() => onSelectPlan(name)}
         className={`w-full font-bold py-7 text-lg rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg ${buttonClass} ${
           isPopular ? "text-emerald-700 bg-white hover:bg-gray-50 hover:-translate-y-1" : "hover:-translate-y-1"
         }`}
@@ -88,6 +90,13 @@ const PricingCard = ({ plan, index }) => {
 };
 
 export default function PricingSection() {
+  const navigate = useNavigate();
+
+  const handleSelectPlan = (planName) => {
+    localStorage.setItem("userCurrentPlan", planName);
+    navigate("/register");
+  };
+
   const plans = [
     {
       name: "Gratuito",
@@ -155,7 +164,7 @@ export default function PricingSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {plans.map((plan, index) => (
-            <PricingCard key={index} plan={plan} index={index} />
+            <PricingCard key={index} plan={plan} index={index} onSelectPlan={handleSelectPlan} />
           ))}
         </div>
       </div>
