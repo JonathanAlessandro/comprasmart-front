@@ -77,6 +77,12 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
+    useEffect(() => {
+        const handleExpiredSession = () => logout();
+        window.addEventListener("poupecesta:session-expired", handleExpiredSession);
+        return () => window.removeEventListener("poupecesta:session-expired", handleExpiredSession);
+    }, []);
+
     // Disponibiliza o estado e as funções para todos os componentes filhos
     return (
         <AuthContext.Provider value={{ ...authState, login, logout, loginAsDemo }}>
