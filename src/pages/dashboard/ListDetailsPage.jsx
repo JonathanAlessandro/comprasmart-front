@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import MarketComparisonModal from "@/components/MarketComparisonModal";
+import AllergenWarningPopup from "@/components/AllergenWarningPopup.jsx";
 import api from "@/services/api";
 import { useLists } from "@/contexts/ListContext";
 import { CATEGORY_MAP, getCategory } from "@/utils/categoryMap";
@@ -53,7 +54,11 @@ export default function ListDetailsPage() {
   const [showWarning, setShowWarning] = useState(true);
   const [userAllergies, setUserAllergies] = useState([]);
   const [allergyConflict, setAllergyConflict] = useState(null);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [allergenPopupOpen, setAllergenPopupOpen] = useState(false);
+  const [allergenChecking, setAllergenChecking] = useState(false);
+  const [allergenMatches, setAllergenMatches] = useState([]);
+  const [listAllergenMatches, setListAllergenMatches] = useState([]);
+  const [allergenReviewOnly, setAllergenReviewOnly] = useState(false);
   const [savingItem, setSavingItem] = useState(false);
   const [comparison, setComparison] = useState(null);
   const [comparisonOpen, setComparisonOpen] = useState(false);
@@ -162,6 +167,40 @@ export default function ListDetailsPage() {
   }, [newItem.name, userAllergies]);
 
   const items = list?.items || [];
+  const itemNamesSignature = items.map((item) => item.name).filter(Boolean).sort().join("|");
+
+  useEffect(() => {
+    if (!itemNamesSignature || userAllergies.length === 0) {
+      setListAllergenMatches([]);
+      return undefined;
+    }
+
+    let active = true;
+    const timer = window.setTimeout(async () => {
+      try {
+        const { data } = await api.post("/api/allergens/check/batch", {
+          items: items.map((item) => item.name).filter(Boolean),
+          userAllergies,
+        });
+        if (active) setListAllergenMatches(Array.isArray(data.matches) ? data.matches : []);
+      } catch {
+        if (active) setListAllergenMatches([]);
+      }
+    }, 350);
+
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
+  }, [itemNamesSignature, userAllergies]);
+
+  const allergenMatchesByName = useMemo(() => {
+    const map = new Map();
+    listAllergenMatches.forEach((match) => {
+      map.set(String(match.name || "").trim().toLowerCase(), match);
+    });
+    return map;
+  }, [listAllergenMatches]);
   const totalItems = items.length;
   const checkedItemsList = items.filter((item) => item.checked);
   const checkedItems = checkedItemsList.length;
@@ -229,7 +268,8 @@ export default function ListDetailsPage() {
       setSuggestions([]);
       setShowSuggestions(false);
       setAllergyConflict(null);
-      setShowConfirmModal(false);
+      setAllergenPopupOpen(false);
+      setAllergenMatches([]);
     } catch (error) {
       setComparisonError(error.response?.data?.error || "Não foi possível adicionar o produto.");
     } finally {
@@ -237,11 +277,41 @@ export default function ListDetailsPage() {
     }
   };
 
-  const handleAddAttempt = (event) => {
+  const handleAddAttempt = async (event) => {
     event.preventDefault();
-    if (!newItem.name.trim()) return;
-    if (allergyConflict) setShowConfirmModal(true);
-    else confirmAdd();
+    const itemName = newItem.name.trim();
+    if (!itemName || savingItem || allergenChecking) return;
+
+    if (userAllergies.length === 0) {
+      await confirmAdd();
+      return;
+    }
+
+    setAllergenChecking(true);
+    setAllergenMatches([]);
+    setAllergenReviewOnly(false);
+    setAllergenPopupOpen(true);
+    try {
+      const { data } = await api.post("/api/allergens/check/item", {
+        item: itemName,
+        userAllergies,
+      });
+      if (Array.isArray(data.matches) && data.matches.length > 0) {
+        setAllergenMatches([data]);
+      } else {
+        setAllergenPopupOpen(false);
+        await confirmAdd();
+      }
+    } catch {
+      if (allergyConflict) {
+        setAllergenMatches([{ name: itemName, matches: [allergyConflict], sources: ["keywords"] }]);
+      } else {
+        setAllergenPopupOpen(false);
+        await confirmAdd();
+      }
+    } finally {
+      setAllergenChecking(false);
+    }
   };
 
   const changeQuantity = async (item, delta) => {
@@ -291,27 +361,19 @@ export default function ListDetailsPage() {
 
   return (
     <div className="relative min-h-screen bg-[#F8FAFC] px-4 pb-96 font-sans md:px-8">
-      {showConfirmModal && (
-        <div className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-950/70 p-6 backdrop-blur-md">
-          <Card className="w-full max-w-sm rounded-[2rem] border-none bg-white p-8 text-center shadow-2xl">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-red-100 text-red-600">
-              <AlertTriangle size={40} strokeWidth={2.5} />
-            </div>
-            <h3 className="mt-6 text-2xl font-black tracking-tight text-slate-900">Risco detectado</h3>
-            <p className="mt-3 text-sm font-medium leading-relaxed text-slate-500">
-              O produto <strong className="text-red-600">{newItem.name}</strong> pode conter ingredientes relacionados à sua restrição de <strong>{allergyConflict}</strong>.
-            </p>
-            <div className="mt-7 grid gap-3">
-              <Button onClick={confirmAdd} disabled={savingItem} className="h-12 rounded-xl bg-red-600 font-black text-white hover:bg-red-700">
-                {savingItem ? "Adicionando..." : "Ignorar e adicionar"}
-              </Button>
-              <Button variant="ghost" onClick={() => setShowConfirmModal(false)} className="h-12 rounded-xl font-black text-slate-500">
-                Cancelar inclusão
-              </Button>
-            </div>
-          </Card>
-        </div>
-      )}
+      <AllergenWarningPopup
+        open={allergenPopupOpen}
+        loading={allergenChecking}
+        matches={allergenMatches}
+        sourceLabel={newItem.name}
+        confirmLabel={allergenReviewOnly ? "Fechar alerta" : "Estou ciente, adicionar"}
+        cancelLabel={allergenReviewOnly ? "Voltar para a lista" : "Cancelar inclusão"}
+        onConfirm={allergenReviewOnly ? () => setAllergenPopupOpen(false) : confirmAdd}
+        onCancel={() => {
+          setAllergenPopupOpen(false);
+          setAllergenMatches([]);
+        }}
+      />
 
       <MarketComparisonModal
         isOpen={comparisonOpen}
@@ -340,6 +402,28 @@ export default function ListDetailsPage() {
             <Store className="mr-2" size={18} /> Comparar Preços
           </Button>
         </header>
+
+        {listAllergenMatches.length > 0 && (
+          <button
+            type="button"
+            onClick={() => {
+              setAllergenMatches(listAllergenMatches);
+              setAllergenReviewOnly(true);
+              setAllergenPopupOpen(true);
+            }}
+            className="flex w-full items-center gap-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-left shadow-sm transition hover:border-red-300 hover:shadow-md"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-600 text-white">
+              <AlertTriangle size={22} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-black uppercase tracking-widest text-red-700">Alerta de alergênicos</span>
+              <span className="mt-1 block text-sm font-semibold text-red-600">
+                {listAllergenMatches.length} {listAllergenMatches.length === 1 ? "produto da lista requer" : "produtos da lista requerem"} atenção. Toque para ver os detalhes.
+              </span>
+            </span>
+          </button>
+        )}
 
         {/* Card Formulário de Inserção de Produto com Preço e Qtd */}
         <Card className={`rounded-[2rem] border-none shadow-[0_8px_30px_rgb(0,0,0,0.06)] ${allergyConflict ? "bg-red-50 ring-2 ring-red-400" : "bg-white"}`}>
@@ -518,13 +602,17 @@ export default function ListDetailsPage() {
                   </span>
                 </div>
 
-                {categoryItems.map((item) => (
+                {categoryItems.map((item) => {
+                  const itemAllergenMatch = allergenMatchesByName.get(String(item.name || "").trim().toLowerCase());
+                  return (
                   <div
                     key={item._id}
                     className={`flex flex-col gap-4 rounded-2xl border p-4 transition sm:flex-row sm:items-center sm:justify-between ${
                       item.checked
                         ? "border-transparent bg-slate-100/60 opacity-55"
-                        : "border-transparent bg-white shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:border-emerald-100"
+                        : itemAllergenMatch
+                          ? "border-red-200 bg-red-50/60 shadow-[0_8px_30px_rgb(239,68,68,0.08)]"
+                          : "border-transparent bg-white shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:border-emerald-100"
                     }`}
                   >
                     {/* Checkbox e Nome do Produto */}
@@ -544,6 +632,19 @@ export default function ListDetailsPage() {
                           {item.unit ? `${item.unit} · ` : ""}
                           {item.category || "Geral"}
                         </p>
+                        {itemAllergenMatch && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setAllergenMatches([itemAllergenMatch]);
+                              setAllergenReviewOnly(true);
+                              setAllergenPopupOpen(true);
+                            }}
+                            className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-red-600 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-white"
+                          >
+                            <AlertTriangle size={11} /> Contém: {itemAllergenMatch.matches.join(", ")}
+                          </button>
+                        )}
                       </div>
                     </div>
 
@@ -637,7 +738,8 @@ export default function ListDetailsPage() {
                       </button>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </section>
             ))
           )}
